@@ -154,23 +154,6 @@
             <textarea id="notes" class="input" name="Notes" style="height:100px"></textarea>
         </div>
 
-        <!-- UC-7 -->
-        <div class="buttonParent">
-            <button class="resetButton button cancelButton">Cancel</a>
-            <div class="submit-reset">
-                <button type="submit" class="button submitButton" id="submitButton">Submit</button>
-            <button type="reset" class="resetButton button">Reset</button>
-        </div>
-
-        <!-- UC-8 -->
-        <script>
-               const salary = document.querySelector('#salary');
-               const output = document.querySelector('.salary-output');
-               output.textContent = salary.value;
-               salary.addEventListener('input', function() {
-               output.textContent = salary.value;
-               }); 
-        </script>    
     </form>
 </body>
 </html>
@@ -348,53 +331,4 @@
     border-radius: 5px;
     opacity: 1;
    }
-   /* UC-6 EXTENSION */
-   @media only screen and (max-width: 960px) {
-
-       .cancelButton 
-        {
-           margin-left: 0px;
-        }
-       .form {
-          width: 85%;
-          padding: 44px 20px;
-        }
-   } 
-
-  @media only screen and (max-width: 600px)
-  {
-     .form
-       {
-          margin-top: 10px;
-       }
-     .row {
-            flex-direction: column;
-        }
-
-      .uploadButton {
-            justify-content: flex-start;
-        }
-
-      .profile-radio-content {
-          flex-flow:wrap;
-          width: 80%;
-      }
-
-      .submit-reset {
-         width: 100%;
-         display: flex;
-         flex-grow: 1;
-         flex-direction: row-reverse;
-         justify-content: space-between;
-         margin-bottom: 20px;
-      }
-      .buttonParent {
-          flex-direction: column-reverse;
-         align-items: flex-start;
-      }
-      .submitButton {
-          margin: 0;
-      }
-
-    }
 </style>
