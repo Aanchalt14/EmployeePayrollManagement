@@ -170,6 +170,163 @@
                salary.addEventListener('input', function() {
                output.textContent = salary.value;
                }); 
+
+             
+             <--UC-9-->
+               class EmployeePayRoll {
+
+                get id() { return this._id; }
+                set(id) {
+                this._id = id;
+            }
+
+                get name () { return this._name; }
+                set name(name) {
+                this._name = name;
+            }
+ 
+                get profilePic() { return this._profilePic; }
+                set profilePic(profilePic) {
+                this._profilePic = profilePic;
+            }
+
+                get gender() { return this._gender; }
+                set gender(gender) {
+                this._gender = gender;
+            }
+
+                get department() { return this._department; }
+                set department(department) {
+                this._department = department;
+            }
+
+                get salary() { return this._salary; }
+                set salary(salary) {
+                this._salary = salary;
+            }
+
+                get note() { return this._note; }
+                set note(note) {
+                this._note = note;
+            }
+
+
+                get startDate() { return this._startDate; }
+                set startDate(startDate) {
+                this._startDate = startDate;
+            }
+
+
+             toString() {
+
+          const options = { year: 'numeric', month: 'short', day: 'numeric' };
+          const empDate = !this.startDate ? "undefined" :
+            this.startDate;
+          return "id=" + this.id + ", name='" + this.name + ", gender='" + this.gender +
+            ", profilePic='" + this.profilePic + ", department=" + this.department +
+            ", salary=" + this.salary + ", startDate=" + empDate + ", note=" + this.note;
+        }
+
+
+     }       
+
+      <-- UC-10-->
+
+              
+                 swindow.addEventListener('DOMContentLoaded', (event) => {
+                // validating error for name
+                  const name = document.querySelector('#name');
+                  const textError = document.querySelector('.text-error')
+                  name.addEventListener('input', function() {
+                  if (name.value.length === 0) {
+                  textError.textContent = "";
+                  return;
+                }
+               try {
+              (new EmployeePayRoll()).name = name.value;
+              textError.textContent = "";
+              } catch (e) {
+              textError.textContent = e;
+              }
+           });
+
+             //validaitng date
+           const date = document.querySelector('#date');
+           const dateError = document.querySelector('.date-error');
+           const getInputValueById = (id) => {
+           let value = document.querySelector(id).value;
+           return value;
+           }
+           date.addEventListener('onclick', function() {
+           let startDate = getInputValueById('#day') + " " + getInputValueById('#month') + " " +
+            getInputValueById('#year');
+            try {
+            (new EmployeePayRoll()).startDate = new Date(Date.parse(startDate));
+            dateError.textContent = "";
+            } catch (e) {
+            dateError.textContent = e;
+          }
+
+        });
+       })
+
+  
+
+    <--UC-11--
+
+          class EmployeePayRoll {
+
+    // getter and setter method
+    get id() { return this._id; }
+    set(id) {
+    set id(id) {
+        this._id = id;
+    }
+
+       class EmployeePayRoll {
+        this._note = note;
+    }
+
+     get startDate() { return this._startDate; }
+     get startDate() { return this._startDate; }
+     set startDate(startDate) {
+        let now = new Date();
+        if (startDate > now) throw 'Start Date is a Future Date!';
+     class EmployeePayRoll {
+            throw 'Start Date is beyond 30 Days!';
+        this._startDate = startDate;
+    }
+
+
+
+    toString() {
+
+        const options = { year: 'numeric', month: 'short', day: 'numeric' };
+        const empDate = !this.startDate ? "undefined" :
+            this.startDate;
+        return "id=" + this.id + ", name='" + this.name + ", gender='" + this.gender +
+            ", profilePic='" + this.profilePic + ", department=" + this.department +
+            ", salary=" + this.salary + ", startDate=" + empDate + ", note=" + this.note;
+        const empDate = !this.startDate ? "undefined" : this.startDate;
+        return "ID=" + this.id + "\nName='" + this.name + "\nGender='" + this.gender +
+            "\nProfilePic='" + this.profilePic + "\nDepartment=" + this.department +
+            "\nSalary=" + this.salary + "\nStartDate=" + empDate + "\nNote=" + this.note;
+    }
+
+
+}        
+
+      <-- UC-12 -->
+     window.addEventListener('DOMContentLoaded', (event) => {
+    const name = document.querySelector("#name")
+    const textError = document.querySelector('.text-error')
+    name.addEventListener('input', function() {
+        if (name.value.length == 0) {
+            textError.textContent = ""
+            return
+        }  
+
+
         </script>    
     </form>
 </body>
