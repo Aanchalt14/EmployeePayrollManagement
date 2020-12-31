@@ -332,6 +332,87 @@
             textError.textContent = ""
         } catch (e) { textError.textContent = e }
     });
+
+      <--UC-14 -->
+     const save = () => {
+    try {
+        let employeePayrollData = createEmployeePayroll();
+
+    } catch (e) {
+        return;
+    }
+
+      employeePayrollData.id = getSelectedValues('[name =id]')
+    employeePayrollData.profilePic = getSelectedValues('[name=profile]').pop()
+    employeePayrollData.gender = getSelectedValues('[name=gender]').pop()
+    employeePayrollData.department = getSelectedValues('[name=department]')
+    employeePayrollData.salary = getInputValueById('#salary')
+    employeePayrollData.note = getInputValueById('#notes')
+    employeePayrollData.date = getInputValueById('#day') + " " + getInputValueById('#month') + " " + getInputValueById('#year')
+
+    alert(employeePayrollData.date)
+    alert(employeePayrollData.toString())
+    return employeePayrollData
+}
+
+const createAndUpdateStorage = (employee) => {
+    let employeePayrollList = JSON.parse(localStorage.getItem("EmployeePayrollList"));
+    if (employeePayrollList != undefined) {
+        employeePayrollList.push(employee);
+    } else {
+        employeePayrollList = [employee];
+    }
+    alert(employeePayrollList.toString());
+    localStorage.setItem("EmployeePayrollList", JSON.stringify(employeePayrollList));
+}
+
+const getSelectedValues = (propertyValue) => {
+    let allItems = document.querySelectorAll(propertyValue);
+    let setItems = [];
+    allItems.forEach(item => {
+        if (item.checked)
+            setItems.push(item.value);
+    });
+    return setItems;
+}
+
+const getInputElementValue = (id) => {
+    let value = document.querySelector(id).value;
+    return value;
+}
+
+const getInputValueById = (id) => {
+    let value = document.querySelector(id).value;
+    return value;
+}
+
+//UC15: Resetting the form fields on reset
+const resetForm = () => {
+    setValue('#name', '');
+    unsetSelectedValues('[name=profile]');
+    unsetSelectedValues('[name=gender]');
+    unsetSelectedValues('[name=department]');
+    setValue('#salary', ' ');
+    setValue('#notes', ' ');
+    setValue('#day', '1');
+    setValue('#month', 'Jan');
+    setValue('#year', '2020');
+}
+
+const unsetSelectedValues = (propertyValue) => {
+    let allItems = document.querySelectorAll(propertyValue);
+    allItems.forEach(item => { item.checked = false; });
+}
+
+const setTextValue = (id, value) => {
+    const element = document.querySelector(id);
+    element.textContent = value;
+}
+
+const setValue = (id, value) => {
+    const element = document.querySelector(id);
+    element.value = value;
+}
               
         </script>    
     </form>
